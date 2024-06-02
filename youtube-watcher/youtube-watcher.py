@@ -3,7 +3,7 @@
 import logging
 import sys
 import requests
-from configs.yt_config import config
+from yt_config import config
 import pprint
 
 
