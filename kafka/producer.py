@@ -44,7 +44,7 @@ def main():
     })
 
     # Fetch the latest Avro schema for the value
-    subject_name = 'retail_data-value'
+    subject_name = 'retail_data_1-value'
     schema_str = schema_registry_client.get_latest_version(subject_name).schema.schema_str
 
     # Create Avro Serializer for the value
@@ -74,9 +74,11 @@ def main():
         # Create a dictionary from the row values
         value = row.to_dict()
         # Produce to Kafka
-        producer.produce(topic='retail_data', key=str(index), value=value, on_delivery=delivery_report)
+        producer.produce(topic='retail_data_1', key=str(index), value=value, on_delivery=delivery_report)
         producer.flush()
-        #break
+        
+        if index == 50:
+            break
         
     logging.info("All Data successfully published to Kafka")
     

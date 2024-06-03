@@ -9,8 +9,8 @@ config = {
     'BASIC_AUTH_CREDENTIAL_SOURCE': 'USER_INFO',
 
     "KAFKA_ENDPOINT": "https://psrc-4nyjd.us-central1.gcp.confluent.cloud",
-    "AUTO_OFFSET_RESET": "Latest",
-    "GROUP_ID": "group12",
+    "AUTO_OFFSET_RESET": "Earliest",
+    "GROUP_ID": "group5120",
     'security.protocol': 'SASL_SSL',
     "sasl.mechanisms": 'PLAIN',
 

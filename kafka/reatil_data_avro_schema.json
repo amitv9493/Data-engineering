@@ -1,7 +1,4 @@
 {
-  "namespace": "com.kaggle.onlineretail",
-  "name": "Purchase",
-  "type": "record",
   "fields": [
     {
       "name": "Invoice",
@@ -12,9 +9,12 @@
       "type": "string"
     },
     {
+      "default": null,
       "name": "Description",
-      "type": ["null", "string"],
-      "default": null
+      "type": [
+        "null",
+        "string"
+      ]
     },
     {
       "name": "Quantity",
@@ -29,13 +29,19 @@
       "type": "double"
     },
     {
+      "default": null,
       "name": "CustomerID",
-      "type": ["null", "string"],
-      "default": null
+      "type": [
+        "null",
+        "string"
+      ]
     },
     {
       "name": "Country",
       "type": "string"
     }
-  ]
+  ],
+  "name": "Purchase",
+  "namespace": "com.kaggle.onlineretail",
+  "type": "record"
 }
