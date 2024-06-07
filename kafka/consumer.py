@@ -16,7 +16,7 @@ def main(groupid:str):
         }
     )
 
-    subject_name = "retail_data_1-value"
+    subject_name = "retail_data-value"
     schema_str = schema_registry_client.get_latest_version(subject_name).schema.schema_str
 
     key_deserializer = StringDeserializer("utf_8")
@@ -36,7 +36,7 @@ def main(groupid:str):
         }
     )
 
-    consumer.subscribe(["retail_data_1"])
+    consumer.subscribe(["retail_data"])
     file = open('data.txt','a')
     try:
         while True:
@@ -50,7 +50,7 @@ def main(groupid:str):
                 continue
 
             logging.info(f"Successfully consumed the message {msg.key()} - {msg.value()}")
-            file.write(msg.key()+'\n')
+            file.write(msg.key()+','+'\n')
     except KeyboardInterrupt:
         pass
     finally:
@@ -58,5 +58,5 @@ def main(groupid:str):
         file.close()
 
 if __name__ == "__main__":
-    groupid = sys.argv[1]
-    main(groupid)
+    group_id = sys.argv[1]
+    main(group_id)
