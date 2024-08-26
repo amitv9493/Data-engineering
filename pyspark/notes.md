@@ -54,12 +54,50 @@
 
 ## Executer Memory Management (Executer OOM)
 - [Watch this video for explainations](https://www.youtube.com/watch?v=b2hO1oJf9nA&list=PLTsNSGeIpGnGkpfKMf7ilFmzfx6AjMKyT&index=18)
-
-## Spark Submit
+- Parts of spark executor memory.
+  - spark.executor.memory = 10GB
+  - spark.executor.MemoryOverhead = 10% of executor memory.
 ```mermaid
-graph LR;
-    A[Start] --> B[Process];
-    B --> C{Decision};
-    C -->|Yes| D[End];
-    C -->|No| B;
+graph LR
+    subgraph Total_Container[Total Container Memory: 11 GB]
+        
+        subgraph JVM[JVM Memory: 9.7 GB]
+            subgraph UserMemory[User Memory: 40% of 9.7 GB]
+                direction TB
+                A1[User-defined functions]
+                A2[Data Structures]
+                A3[RDDs]
+            end
+            
+            subgraph ReservedMemory[Reserved Memory: 300 MB]
+                direction TB
+                B1[Reserved Processes]
+                B2[Other System Processes]
+            end
+
+            SparkMemory[Spark Memory: 60% of 9.7 GB]
+        end
+        
+        Overhead[Overhead: 1.3 GB]
+    end
+
+
+
 ```
+## Spark Submit
+
+
+## Deployment modes in Spark
+
+  - What all deployment modes are there in spark?
+  - what is edge node?
+  - why do we need client and cluster modes?
+  - what will happend if I close my edge node?
+  
+
+## Adaptive Query Execution (AQE) in Spark
+
+  - What is AQE?
+    - It gives the flexibility to change the query execution in runtime. 
+    - Only works in spark 3.0
+    - 
