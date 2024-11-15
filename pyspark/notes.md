@@ -1,5 +1,5 @@
 ## Spark SQL Engine
-- What is catalyst optimiser? 
+- What is catalyst optimizer? 
 - Spark SQL Engine.
 - why we get analysis exception error ?
 - what is physical planning / spark plan ?
