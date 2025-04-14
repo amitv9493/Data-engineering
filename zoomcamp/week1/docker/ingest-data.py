@@ -1,8 +1,9 @@
+import argparse
+from time import time
+
 import pandas as pd
 from sqlalchemy import create_engine
-from time import time
-import argparse
-import os 
+
 
 def main(args):
     user = args.user

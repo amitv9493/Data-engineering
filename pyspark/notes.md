@@ -61,8 +61,8 @@
 graph LR
     subgraph Total_Container[Total Container Memory: 11 GB]
         
-        subgraph JVM[JVM Memory: 9.7 GB]
-            subgraph UserMemory[User Memory: 40% of 9.7 GB]
+        subgraph JVM[JVM Memory: 10 GB]
+            subgraph UserMemory[User Memory: 40% of 9.7 GB *jvm mem - reserved mem* ]
                 direction TB
                 A1[User-defined functions]
                 A2[Data Structures]
@@ -78,7 +78,7 @@ graph LR
             SparkMemory[Spark Memory: 60% of 9.7 GB]
         end
         
-        Overhead[Overhead: 1.3 GB]
+        Overhead[Overhead: 1 GB]
     end
 
 
@@ -104,5 +104,3 @@ graph LR
     - If the skewed partition is 5 times of the median partition or larger than 250 mb it is consider to as a skewed partition.
   
 ### Cache and persist
-
-### 
