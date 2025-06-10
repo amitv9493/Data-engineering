@@ -14,7 +14,11 @@
  - what is data frame / dataset?
  - why we should not use an RDD?
  - RDD is used for unstructured data and dataset, data Frame API is used to structured data 
-
+## Task, jobs and Stages
+ - If there are n partitions, there will be n tasks,
+ - The number of jobs depends on the number of actions hit.
+ - The number of stages is decided with the shuffle boundaries of a transformation that is to be performed.
+  
 ## Re partition and coalesce
 - Use to manually partition the RDD. 
 - Cannot partition the data frame/dataset first need to convert it into the rdd and then re-partition or coalesce happens.
