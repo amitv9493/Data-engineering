@@ -9,5 +9,6 @@ dependencies = [
     "mysql-connector-python>=9.3.0",
     "pandas>=2.2.3",
     "requests>=2.32.3",
+    "ruff>=0.14.11",
     "sqlalchemy>=2.0.40",
 ]

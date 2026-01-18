@@ -22,7 +22,6 @@ async def main(args):
     db = args.db
     port = args.port
     table_name = args.table_name
-    path = args.path
 
     engine = create_engine(f"postgresql://{user}:{password}@{host}:{port}/{db}")
     df_iter = pd.read_csv("taxi_data.csv", iterator=True, chunksize=100000)
