@@ -1,0 +1,67 @@
+# docker-compose.yml - Spark cluster with 1 master and 3 workers
+services:
+  spark-master:
+    image: apache/spark
+    container_name: spark-master
+    user: root
+    ports:
+      - "8080:8080"   # Spark Master web UI
+      - "7077:7077"   # Spark Master port
+      - "4040:4040"   # Spark application UI
+    environment:
+      - SPARK_MODE=master
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+    volumes:
+      - ./py_spark:/opt/spark/work-dir
+
+  spark-worker-1:
+    image: apache/spark
+    container_name: spark-worker-1
+    user: root
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=5g
+      - SPARK_WORKER_CORES=3
+    command: >
+      /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker
+      spark://spark-master:7077
+    volumes:
+      - ./py_spark:/opt/spark/work-dir
+
+  spark-worker-2:
+    image: apache/spark
+    container_name: spark-worker-2
+    user: root
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=5g
+      - SPARK_WORKER_CORES=3
+    command: >
+      /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker
+      spark://spark-master:7077
+    volumes:
+      - ./py_spark:/opt/spark/work-dir
+
+  spark-worker-3:
+    image: apache/spark
+    container_name: spark-worker-3
+    user: root
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=5g
+      - SPARK_WORKER_CORES=3
+    command: >
+      /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker
+      spark://spark-master:7077
+    volumes:
+      - ./py_spark:/opt/spark/work-dir
+
